@@ -3,9 +3,7 @@ package info.nahid.controller;
 import info.nahid.entity.Task;
 import info.nahid.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,4 +27,9 @@ public class TaskController {
     }
     //@PathVariable annotation is used to extract values from the URI of a request in a Spring MVC controller method.
 
+    @PostMapping(value = "/task")
+    public String addTopic(@RequestBody Task task) {
+        taskService.addTasks(task);
+        return "Save task successfully";
+    }
 }
