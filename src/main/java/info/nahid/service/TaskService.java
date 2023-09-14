@@ -26,4 +26,7 @@ public class TaskService {
     public void addTasks(Task task) {
         taskRepository.save(task);
     }
+    public void updateTask(String id, Task task) {
+        taskRepository.save(task);
+    }
 }

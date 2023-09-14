@@ -16,20 +16,24 @@ public class TaskController {
     //Spring Boot automatically injects the UserRepository bean into the UserService
     private TaskService taskService;
 
-    @GetMapping("/task")
+    @GetMapping("/tasks")
     public List<Task> getAllTask() {
         return taskService.getAllTasks();
     }
-
-    @GetMapping("/task/{id}")
+    @GetMapping("/tasks/{id}")
     public Task getTask(@PathVariable String id) {
         return taskService.getTask(id);
+        //@PathVariable annotation is used to extract values from the URI of a request in a Spring MVC controller method.
     }
-    //@PathVariable annotation is used to extract values from the URI of a request in a Spring MVC controller method.
-
-    @PostMapping(value = "/task")
+    @PostMapping(value = "/tasks")
     public String addTopic(@RequestBody Task task) {
         taskService.addTasks(task);
         return "Save task successfully";
     }
+    @PutMapping(value = "/tasks/{id}")
+    public String udpateTask(@RequestBody Task task, @PathVariable String id) {
+        taskService.updateTask(id, task);
+        return "Update task successfully";
+    }
+
 }
