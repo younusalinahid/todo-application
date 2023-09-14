@@ -35,5 +35,10 @@ public class TaskController {
         taskService.updateTask(id, task);
         return "Update task successfully";
     }
+    @DeleteMapping(value = "/tasks/{id}")
+    public String deleteTask(@PathVariable String id){
+        taskService.deleteTask(id);
+        return "Delete task successfully";
+    }
 
 }
